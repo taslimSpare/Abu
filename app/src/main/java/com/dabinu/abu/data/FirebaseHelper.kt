@@ -64,6 +64,8 @@ class FirebaseHelper {
     fun isAuthenticated() : Boolean = mAuth.currentUser == null
 
 
-    fun getUserId() : String = mAuth.currentUser?.uid.toString()
+    fun updateSubscriptionStatus(bool: Boolean) {
+        mAuth.uid?.let { firebaseFireStore.collection("users").document(it).update("hasSubscribed", bool) }
+    }
 
 }

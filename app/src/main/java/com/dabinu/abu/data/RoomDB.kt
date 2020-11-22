@@ -21,6 +21,13 @@ class RoomDB(
 
     @Suppress("RedundantSuspendModifier")
     @WorkerThread
+    suspend fun updateSubscriptionStatus(hasSubscribed: Boolean, email: String) {
+        accountDao.updateSubscriptionStatus(hasSubscribed, email)
+    }
+
+
+    @Suppress("RedundantSuspendModifier")
+    @WorkerThread
     suspend fun deleteProfile() {
         accountDao.deleteProfile()
     }

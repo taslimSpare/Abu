@@ -30,6 +30,8 @@ class AuthViewModel(
 
     private fun saveProfileToRoom(account: Account) = viewModelScope.launch { roomDB.insert(account) }
 
+    fun updateSubscriptionStatusOnRoom(hasSubscribed: Boolean, email: String) = viewModelScope.launch { roomDB.updateSubscriptionStatus(hasSubscribed, email) }
+
     private fun deleteProfileFromRoom() = viewModelScope.launch { roomDB.deleteProfile() }
 
 
@@ -135,6 +137,11 @@ class AuthViewModel(
             logout()
             createWithEmailAndPassword.postValue(ResponseBody(STATE_FAILED, e.message.toString(), null))
         }
+    }
+
+
+    fun updateSubscriptionStatusToFirebase(bool: Boolean) {
+        firebase.updateSubscriptionStatus(bool)
     }
 
 
