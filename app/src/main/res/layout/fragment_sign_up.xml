@@ -175,13 +175,15 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/normal_margin"
-            android:text="@string/login"
+            android:text="@string/signup"
             app:layout_constraintStart_toEndOf="@+id/leftGuide"
             app:layout_constraintEnd_toStartOf="@id/rightGuide"
             app:layout_constraintTop_toBottomOf="@+id/confirm_password_textinput" />
 
 
-        <include layout="@layout/layout_loading" />
+        <include
+            android:id="@+id/layout_loading"
+            layout="@layout/layout_loading" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

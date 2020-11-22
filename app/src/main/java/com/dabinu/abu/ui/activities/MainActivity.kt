@@ -9,14 +9,18 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.dabinu.abu.R
 import com.dabinu.abu.models.DrawerItem
 import com.dabinu.abu.ui.adapters.DrawerAdapter
+import com.dabinu.abu.viewmodels.AuthViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.drawer_content.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
 
 
     private lateinit var toggle: ActionBarDrawerToggle
     private lateinit var navController: NavController
+    private val authViewModel by viewModel<AuthViewModel>()
+
 
     private var isUserLoggedIn = false
 
