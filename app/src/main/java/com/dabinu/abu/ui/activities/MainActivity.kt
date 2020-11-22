@@ -20,24 +20,6 @@ class MainActivity : AppCompatActivity() {
 
     private var isUserLoggedIn = false
 
-    private val drawerItems = mutableListOf<DrawerItem>().apply {
-        add(DrawerItem(R.drawable.ic_home, getString(R.string.menu_home), true))
-        add(DrawerItem(R.drawable.ic_countries, getString(R.string.menu_currencies), false))
-        add(DrawerItem(R.drawable.ic_rate_us, getString(R.string.menu_rate_us), false))
-        add(DrawerItem(R.drawable.ic_share_app, getString(R.string.menu_share_app), false))
-    }
-
-    private val drawerAdapter by lazy { DrawerAdapter(this, drawerItems) {item ->
-        drawer_layout.closeDrawers()
-
-        when(item.icon) {
-            R.drawable.ic_home -> navController.navigate(R.id.currencyConversionFragment)
-            R.drawable.ic_countries -> navController.navigate(R.id.currenciesFragment)
-            R.drawable.ic_rate_us -> { }
-            R.drawable.ic_share_app -> { }
-        }
-    } }
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,6 +33,25 @@ class MainActivity : AppCompatActivity() {
 
 
     private fun setupViews() {
+
+        val drawerItems = mutableListOf<DrawerItem>().apply {
+            add(DrawerItem(R.drawable.ic_home, getString(R.string.menu_home), true))
+            add(DrawerItem(R.drawable.ic_countries, getString(R.string.menu_currencies), false))
+            add(DrawerItem(R.drawable.ic_rate_us, getString(R.string.menu_rate_us), false))
+            add(DrawerItem(R.drawable.ic_share_app, getString(R.string.menu_share_app), false))
+        }
+
+        val drawerAdapter by lazy { DrawerAdapter(this, drawerItems) {item ->
+            drawer_layout.closeDrawers()
+
+            when(item.icon) {
+                R.drawable.ic_home -> navController.navigate(R.id.currencyConversionFragment)
+                R.drawable.ic_countries -> navController.navigate(R.id.currenciesFragment)
+                R.drawable.ic_rate_us -> { }
+                R.drawable.ic_share_app -> { }
+            }
+        } }
+
 
         navController = findNavController( R.id.nav_host_fragment)
 
