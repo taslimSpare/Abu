@@ -7,13 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.dabinu.abu.R
 import com.dabinu.abu.databinding.FragmentProfileBinding
-import com.dabinu.abu.databinding.FragmentSignInBinding
 import com.dabinu.abu.models.Account
 import com.dabinu.abu.viewmodels.AuthViewModel
 
@@ -63,6 +61,8 @@ class ProfileFragment : Fragment() {
                 profile.hasSubscribed = isChecked
                 Toast.makeText(requireContext(), "Subscription status updated", Toast.LENGTH_LONG).show()
             }
+
+            ibBack.setOnClickListener { navController.navigateUp() }
         }
     }
 
