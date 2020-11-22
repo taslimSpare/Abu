@@ -10,7 +10,11 @@
         android:id="@+id/currencyConversionFragment"
         android:name="com.dabinu.abu.ui.fragments.CurrencyConversionFragment"
         android:label="fragment_currency_conversion"
-        tools:layout="@layout/fragment_currency_conversion" />
+        tools:layout="@layout/fragment_currency_conversion" >
+        <action
+            android:id="@+id/action_currencyConversionFragment_to_signInFragment"
+            app:destination="@id/signInFragment" />
+    </fragment>
     <fragment
         android:id="@+id/currenciesFragment"
         android:name="com.dabinu.abu.ui.fragments.AllCurrenciesFragment"
@@ -20,15 +24,33 @@
         android:id="@+id/profileFragment"
         android:name="com.dabinu.abu.ui.fragments.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_currencyConversionFragment"
+            app:destination="@id/currencyConversionFragment" />
+    </fragment>
     <fragment
         android:id="@+id/signInFragment"
         android:name="com.dabinu.abu.ui.fragments.SignInFragment"
         android:label="fragment_sign_in"
-        tools:layout="@layout/fragment_sign_in" />
+        tools:layout="@layout/fragment_sign_in" >
+        <action
+            android:id="@+id/action_signInFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+        <action
+            android:id="@+id/action_signInFragment_to_currencyConversionFragment"
+            app:destination="@id/currencyConversionFragment" />
+    </fragment>
     <fragment
         android:id="@+id/signUpFragment"
         android:name="com.dabinu.abu.ui.fragments.SignUpFragment"
         android:label="fragment_sign_up"
-        tools:layout="@layout/fragment_sign_up" />
+        tools:layout="@layout/fragment_sign_up" >
+        <action
+            android:id="@+id/action_signUpFragment_to_signInFragment"
+            app:destination="@id/signInFragment" />
+        <action
+            android:id="@+id/action_signUpFragment_to_currencyConversionFragment"
+            app:destination="@id/currencyConversionFragment" />
+    </fragment>
 </navigation>

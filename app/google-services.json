@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "702664542514",
+    "firebase_url": "https://projectabu-4d9a5.firebaseio.com",
+    "project_id": "projectabu-4d9a5",
+    "storage_bucket": "projectabu-4d9a5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:702664542514:android:7bffcc20f8aa476381ef2b",
+        "android_client_info": {
+          "package_name": "com.dabinu.abu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "702664542514-tqt44a2gasvbsvdn3q1njqoagctg2ieb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBl1MOlLKB9D2mvpl4qykJRvbqCfd9MYO0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "702664542514-tqt44a2gasvbsvdn3q1njqoagctg2ieb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -16,6 +16,9 @@ interface AccountDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun saveProfile(account: Account)
 
+    @Query("UPDATE Account SET hasSubscribed=:hasSubscribed WHERE email = :email")
+    fun updateSubscriptionStatus(hasSubscribed: Boolean?, email: String)
+
     @Query("DELETE FROM Account")
     suspend fun deleteProfile()
 }

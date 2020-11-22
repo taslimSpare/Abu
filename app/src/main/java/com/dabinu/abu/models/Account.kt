@@ -7,5 +7,5 @@ import androidx.room.PrimaryKey
 class Account(
     @PrimaryKey val email: String = "",
     val name: String = "",
-    val hasSubscribed: Boolean = false
+    var hasSubscribed: Boolean = false
 )

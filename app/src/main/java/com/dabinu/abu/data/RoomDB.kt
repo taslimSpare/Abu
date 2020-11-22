@@ -17,4 +17,20 @@ class RoomDB(
     suspend fun insert(word: Account) {
         accountDao.saveProfile(word)
     }
+
+
+    @Suppress("RedundantSuspendModifier")
+    @WorkerThread
+    suspend fun updateSubscriptionStatus(hasSubscribed: Boolean, email: String) {
+        accountDao.updateSubscriptionStatus(hasSubscribed, email)
+    }
+
+
+    @Suppress("RedundantSuspendModifier")
+    @WorkerThread
+    suspend fun deleteProfile() {
+        accountDao.deleteProfile()
+    }
+
+
 }

@@ -25,7 +25,7 @@ val appModules = module {
     single { createApiService() }
     single { FirebaseHelper() }
     single { RoomDB(get() as AccountDao) }
-    single { Room.databaseBuilder(androidContext(), AppDatabase::class.java, "abu_db").build() }
+    single { Room.databaseBuilder(androidContext(), AppDatabase::class.java, "abu_db").allowMainThreadQueries().build() }
     single { get<AppDatabase>().accountDao() }
     viewModel { AuthViewModel(get(), get()) }
 }
