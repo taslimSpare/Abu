@@ -17,6 +17,8 @@
     <dimen name="normal_margin">15dp</dimen>
     <dimen name="big_margin">20dp</dimen>
     <dimen name="very_big_margin">25dp</dimen>
+    <dimen name="very_very_big_margin">40dp</dimen>
+
 
     <dimen name="button_radius">7dp</dimen>
 
