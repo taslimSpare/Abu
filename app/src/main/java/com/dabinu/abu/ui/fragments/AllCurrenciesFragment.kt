@@ -5,56 +5,96 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.dabinu.abu.R
+import com.dabinu.abu.databinding.FragmentAllCurrenciesBinding
+import com.dabinu.abu.models.State
+import com.dabinu.abu.ui.adapters.AllCurrenciesAdapter
+import com.dabinu.abu.viewmodels.FixerViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [AllCurrenciesFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class AllCurrenciesFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+
+    private lateinit var binding: FragmentAllCurrenciesBinding
+    private val viewmodel by viewModel<FixerViewModel>()
+    private lateinit var navController: NavController
+    private val currencyList = arrayListOf<String>()
+    private val adapter by lazy { AllCurrenciesAdapter(currencyList) }
+
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_all_currencies, container, false)
+        navController = Navigation.findNavController(container!!)
+
+        setupViews()
+        setOnClickListeners()
+        observe()
+
+        return binding.root
+
+    }
+
+
+    private fun setupViews() {
+
+        binding.rvAllCurrencies.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
+        binding.rvAllCurrencies.adapter = adapter
+
+        viewmodel.fetchAllSymbols()
+
+    }
+
+
+
+    private fun setOnClickListeners() {
+
+        with(binding) {
+
+            ibBack.setOnClickListener { navController.navigateUp() }
+
+            tvError.setOnClickListener { viewmodel.fetchAllSymbols() }
         }
+
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_all_currencies, container, false)
-    }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment CountriesFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            AllCurrenciesFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    private fun observe() {
+
+        viewmodel.getSymbolsLiveData().observe(viewLifecycleOwner, {
+
+            when (it.state) {
+
+                State.LOADING -> {
+                    binding.pbProgressBar.visibility = View.VISIBLE
+                    binding.tvError.visibility = View.GONE
+                }
+
+                State.ERROR -> {
+                    binding.pbProgressBar.visibility = View.GONE
+                    binding.tvError.visibility = View.VISIBLE
+                }
+
+                State.SUCCESS -> {
+                    binding.pbProgressBar.visibility = View.GONE
+                    binding.tvError.visibility = View.GONE
+
+                    val keys = it?.data?.symbols?.keys?.toList()
+                    val values = it?.data?.symbols?.values?.toList()
+
+                    currencyList.clear()
+                    keys?.forEach { d -> currencyList.add("${d}___${values?.get(keys.indexOf(d))}") }
+                    adapter.notifyDataSetChanged()
+
                 }
             }
+        })
     }
+
 }

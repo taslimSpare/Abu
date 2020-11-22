@@ -1,12 +1,14 @@
 package com.dabinu.abu.viewmodels
 
+import android.util.Log
 import androidx.lifecycle.*
 import com.dabinu.abu.data.ApiService
 import com.dabinu.abu.models.*
 import kotlinx.coroutines.launch
 import java.lang.Exception
 
-class FixerViewModel(private val api: ApiService) : ViewModel() {
+class FixerViewModel(
+    val api: ApiService) : ViewModel() {
 
     private val convertLiveData = MutableLiveData<Resource<ConvertResponse>>()
     private val latestRatesLiveData = MutableLiveData<Resource<LatestResponse>>()
@@ -61,10 +63,16 @@ class FixerViewModel(private val api: ApiService) : ViewModel() {
                 }
             }
             catch (e: Exception) {
-                symbolsLiveData.postValue(Resource.error("Failed, try again later"))
+                symbolsLiveData.postValue(Resource.error(e.message))
             }
         }
     }
+
+
+    fun getConvertLiveData() = convertLiveData
+    fun getLatestRatesLiveData() = latestRatesLiveData
+    fun getSymbolsLiveData() = symbolsLiveData
+
 
 
 
