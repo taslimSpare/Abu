@@ -2,6 +2,7 @@ package com.dabinu.abu.data
 
 import com.dabinu.abu.models.ConvertResponse
 import com.dabinu.abu.models.LatestResponse
+import com.dabinu.abu.models.SymbolsResponse
 import retrofit2.http.Field
 import retrofit2.http.GET
 
@@ -21,6 +22,10 @@ interface ApiService {
         @Field("base") base: String,
         @Field("symbols") symbols: String
     ): LatestResponse
+
+
+    @GET("symbols")
+    suspend fun symbols(): SymbolsResponse
 
 
 }
