@@ -31,5 +31,7 @@
     
     <string name="currencyCalculator">Currency\nCalculator.</string>
 
+    <string name="could_not_fetch">There was a problem fetching the data\nTap to retry</string>
+
 
 </resources>

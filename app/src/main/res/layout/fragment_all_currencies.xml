@@ -25,6 +25,17 @@
             app:layout_constraintTop_toTopOf="parent"
             app:drawableStartCompat="@drawable/ic_back" />
 
+        <ProgressBar
+            android:layout_width="@dimen/big_margin"
+            android:layout_height="@dimen/big_margin"
+            android:id="@+id/pb_progressBar"
+            android:indeterminateTint="@color/app_blue"
+            android:layout_marginEnd="@dimen/normal_margin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/ib_back"
+            app:layout_constraintBottom_toBottomOf="@id/ib_back"
+            tools:ignore="UnusedAttribute" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -32,6 +43,19 @@
             android:layout_marginTop="@dimen/big_margin"
             app:layout_constraintTop_toBottomOf="@id/ib_back"
             app:layout_constraintBottom_toBottomOf="parent" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/tv_error"
+            android:text="@string/could_not_fetch"
+            android:textSize="@dimen/big_text_height"
+            android:gravity="center"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ib_back"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
