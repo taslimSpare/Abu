@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.fragments.AllCurrenciesFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:id="@+id/ib_back"
+            android:text="@string/menu_currencies"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:textColor="@color/app_green"
+            android:gravity="center"
+            android:drawablePadding="15dp"
+            android:background="@android:color/transparent"
+            android:paddingStart="@dimen/big_margin"
+            android:paddingEnd="@dimen/very_small_margin"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:drawableStartCompat="@drawable/ic_back" />
+
+        <ProgressBar
+            android:layout_width="@dimen/big_margin"
+            android:layout_height="@dimen/big_margin"
+            android:id="@+id/pb_progressBar"
+            android:indeterminateTint="@color/app_blue"
+            android:layout_marginEnd="@dimen/normal_margin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/ib_back"
+            app:layout_constraintBottom_toBottomOf="@id/ib_back"
+            tools:ignore="UnusedAttribute" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            tools:listitem="@layout/layout_currencies"
+            android:layout_marginTop="@dimen/big_margin"
+            app:layout_constraintTop_toBottomOf="@id/ib_back"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/tv_error"
+            android:text="@string/could_not_fetch"
+            android:textSize="@dimen/big_text_height"
+            android:gravity="center"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ib_back"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/currencyConversionFragment">
+
+
+    <fragment
+        android:id="@+id/currencyConversionFragment"
+        android:name="com.dabinu.abu.ui.fragments.CurrencyConversionFragment"
+        android:label="fragment_currency_conversion"
+        tools:layout="@layout/fragment_currency_conversion" />
+    <fragment
+        android:id="@+id/currenciesFragment"
+        android:name="com.dabinu.abu.ui.fragments.AllCurrenciesFragment"
+        android:label="fragment_all_currencies"
+        tools:layout="@layout/fragment_all_currencies" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.dabinu.abu.ui.fragments.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/signInFragment"
+        android:name="com.dabinu.abu.ui.fragments.SignInFragment"
+        android:label="fragment_sign_in"
+        tools:layout="@layout/fragment_sign_in" />
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.dabinu.abu.ui.fragments.SignUpFragment"
+        android:label="fragment_sign_up"
+        tools:layout="@layout/fragment_sign_up" />
+</navigation>

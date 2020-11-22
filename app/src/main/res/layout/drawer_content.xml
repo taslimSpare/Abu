@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="@dimen/nav_drawer_width"
+    android:background="@color/white"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:id="@+id/drawerHeader">
+
+        <ImageView
+            android:layout_width="@dimen/normal_circle_diameter"
+            android:layout_height="@dimen/normal_circle_diameter"
+            android:src="@drawable/ic_person"
+            android:background="@drawable/gray_circle_background"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="@dimen/small_margin"
+            android:id="@+id/ivUserImageHomePage"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/normal_text_height"
+            android:layout_below="@+id/ivUserImageHomePage"
+            android:layout_centerHorizontal="true"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:id="@+id/tvUsernameHomePage"/>
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_height"
+        android:layout_margin="@dimen/normal_margin"
+        android:id="@+id/dividerDrawer"
+        android:layout_below="@+id/drawerHeader"
+        android:background="@color/divider" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/dividerDrawer">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/rvDrawer"
+            tools:listitem="@layout/layout_drawer_item" />
+
+        <include layout="@layout/layout_abu_btn"
+            android:layout_gravity="bottom"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_height"
+            android:layout_marginEnd="@dimen/normal_margin"
+            android:layout_marginStart="@dimen/normal_margin"
+            android:layout_marginBottom="@dimen/normal_margin"
+            android:id="@+id/btnDrawerLogout" />
+
+    </FrameLayout>
+
+</RelativeLayout>
