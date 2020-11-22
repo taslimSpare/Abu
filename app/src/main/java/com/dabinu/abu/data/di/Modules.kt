@@ -1,26 +1,32 @@
 package com.dabinu.abu.data.di
 
-import android.content.Context
+import androidx.room.Room
 import com.dabinu.abu.data.data.ApiService
-import com.dabinu.abu.data.data.session.Session
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Response
-import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import com.dabinu.abu.BuildConfig
+import com.dabinu.abu.data.data.FirebaseHelper
+import com.dabinu.abu.data.data.RoomDB
+import com.dabinu.abu.data.room.AppDatabase
+import com.dabinu.abu.data.viewmodels.AuthViewModel
+import org.koin.android.ext.koin.androidContext
+import org.koin.androidx.viewmodel.dsl.viewModel
 import retrofit2.converter.gson.GsonConverterFactory
 
 
-private val API_BASE_URL = BuildConfig.BASE_URL
-private val ACCESS_TOKEN = BuildConfig.ACCESS_TOKEN
-private val PREF_NAME = "abu_prefs"
+private const val API_BASE_URL = BuildConfig.BASE_URL
+private const val ACCESS_TOKEN = BuildConfig.ACCESS_TOKEN
 
 val appModules = module {
-    single { Session(androidContext().getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)) }
-    factory { get<Session>().getAccount() }
     single { createApiService() }
+    single { FirebaseHelper() }
+    single { RoomDB(get()) }
+    single { Room.databaseBuilder(androidContext(), AppDatabase::class.java, "abu_db").build() }
+    single { get<AppDatabase>().accountDao() }
+    viewModel { AuthViewModel(get(), get()) }
 }
 
 
