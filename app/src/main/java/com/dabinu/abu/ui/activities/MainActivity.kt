@@ -65,7 +65,7 @@ class MainActivity : AppCompatActivity() {
         rvDrawer.adapter = drawerAdapter
 
 
-        drawerHeader.setOnClickListener { navController.navigate(R.id.profileFragment) }
+        drawerHeader.setOnClickListener { navController.navigate(R.id.profileFragment); drawer_layout.closeDrawers() }
     }
 
 
@@ -77,17 +77,17 @@ class MainActivity : AppCompatActivity() {
 
                 true -> {
                     btn_log_in.text = getString(R.string.logout)
-                    btn_log_in.setOnClickListener { logout() }
+                    btn_log_in.setOnClickListener { logout(); drawer_layout.closeDrawers() }
                 }
                 false -> {
                     btn_log_in.text = getString(R.string.login)
-                    btn_log_in.setOnClickListener { navController.navigate(R.id.signInFragment) }
+                    btn_log_in.setOnClickListener { navController.navigate(R.id.signInFragment); drawer_layout.closeDrawers() }
                 }
             }
         })
 
         authViewModel.getProfileFromRoom.observe(this, {
-            it?.let { list -> tvUsernameHomePage.text = list[0].name }
+            if(it.isNotEmpty()) tvUsernameHomePage.text = it[0].name
         })
     }
 

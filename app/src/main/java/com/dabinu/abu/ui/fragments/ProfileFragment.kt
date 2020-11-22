@@ -23,7 +23,7 @@ class ProfileFragment : Fragment() {
     private lateinit var viewmodel: AuthViewModel
     private lateinit var navController: NavController
 
-    private var profile = Account()
+    private var myProfile = Account()
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -41,7 +41,7 @@ class ProfileFragment : Fragment() {
 
     private fun observe() {
         viewmodel.getProfileFromRoom.observe(viewLifecycleOwner, {
-            it?.let { list -> profile = list[0]; binding.profile = profile }
+            it?.let { list -> myProfile = list[0]; binding.profile = myProfile }
         })
     }
 
@@ -56,9 +56,9 @@ class ProfileFragment : Fragment() {
             }
 
             cbSubscribed.setOnCheckedChangeListener { _, isChecked ->
-                viewmodel.updateSubscriptionStatusOnRoom(isChecked, profile.email)
+                viewmodel.updateSubscriptionStatusOnRoom(isChecked, myProfile.email)
                 viewmodel.updateSubscriptionStatusToFirebase(isChecked)
-                profile.hasSubscribed = isChecked
+                myProfile.hasSubscribed = isChecked
                 Toast.makeText(requireContext(), "Subscription status updated", Toast.LENGTH_LONG).show()
             }
 

@@ -74,7 +74,7 @@ class SignUpFragment : Fragment() {
 
                 STATE_SUCCESSFUL -> {
                     binding.layoutLoading.root.visibility = View.GONE
-                    navController.navigate(R.id.action_signInFragment_to_currencyConversionFragment)
+                    navController.navigate(R.id.action_signUpFragment_to_currencyConversionFragment)
                 }
             }
         })
