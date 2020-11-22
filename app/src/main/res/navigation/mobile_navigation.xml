@@ -12,10 +12,10 @@
         android:label="fragment_currency_conversion"
         tools:layout="@layout/fragment_currency_conversion" />
     <fragment
-        android:id="@+id/countriesFragment"
-        android:name="com.dabinu.abu.ui.fragments.CountriesFragment"
-        android:label="fragment_countries"
-        tools:layout="@layout/fragment_countries" />
+        android:id="@+id/currenciesFragment"
+        android:name="com.dabinu.abu.ui.fragments.AllCurrenciesFragment"
+        android:label="fragment_all_currencies"
+        tools:layout="@layout/fragment_all_currencies" />
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.dabinu.abu.ui.fragments.ProfileFragment"
@@ -31,9 +31,4 @@
         android:name="com.dabinu.abu.ui.fragments.SignUpFragment"
         android:label="fragment_sign_up"
         tools:layout="@layout/fragment_sign_up" />
-    <fragment
-        android:id="@+id/exchangeRatesFragment"
-        android:name="com.dabinu.abu.ui.fragments.ExchangeRatesFragment"
-        android:label="fragment_exchange_rates"
-        tools:layout="@layout/fragment_exchange_rates" />
 </navigation>

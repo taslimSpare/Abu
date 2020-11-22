@@ -22,8 +22,7 @@ class MainActivity : AppCompatActivity() {
 
     private val drawerItems = mutableListOf<DrawerItem>().apply {
         add(DrawerItem(R.drawable.ic_home, getString(R.string.menu_home), true))
-        add(DrawerItem(R.drawable.ic_exchange_rates, getString(R.string.menu_exchange_rates), false))
-        add(DrawerItem(R.drawable.ic_countries, getString(R.string.menu_countries), false))
+        add(DrawerItem(R.drawable.ic_countries, getString(R.string.menu_currencies), false))
         add(DrawerItem(R.drawable.ic_rate_us, getString(R.string.menu_rate_us), false))
         add(DrawerItem(R.drawable.ic_share_app, getString(R.string.menu_share_app), false))
     }
@@ -33,8 +32,7 @@ class MainActivity : AppCompatActivity() {
 
         when(item.icon) {
             R.drawable.ic_home -> navController.navigate(R.id.currencyConversionFragment)
-            R.drawable.ic_exchange_rates -> navController.navigate(R.id.exchangeRatesFragment)
-            R.drawable.ic_countries -> navController.navigate(R.id.countriesFragment)
+            R.drawable.ic_countries -> navController.navigate(R.id.currenciesFragment)
             R.drawable.ic_rate_us -> { }
             R.drawable.ic_share_app -> { }
         }
