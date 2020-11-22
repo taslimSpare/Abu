@@ -18,7 +18,6 @@ class AuthViewModel(
 
 
     private val authStatus = MutableLiveData<Boolean>()
-    private val userProfileDetails = MutableLiveData<Account>()
     private val signInWithEmailAndPassword = MutableLiveData<ResponseBody<Account>>()
     private val createWithEmailAndPassword = MutableLiveData<ResponseBody<Account>>()
 
@@ -36,7 +35,7 @@ class AuthViewModel(
 
 
 
-    fun isAuthenticated() {
+    fun checkAuthentication() {
         authStatus.postValue((firebase.isAuthenticated()))
     }
 
@@ -124,7 +123,6 @@ class AuthViewModel(
                 userProfile,
                 {
                     saveProfileToRoom(userProfile)
-                    userProfileDetails.postValue(userProfile)
                     authStatus.postValue((firebase.isAuthenticated()))
                     createWithEmailAndPassword.postValue(ResponseBody(STATE_SUCCESSFUL, "", null))
                 },
@@ -148,12 +146,11 @@ class AuthViewModel(
     fun logout() {
         firebase.signOut()
         deleteProfileFromRoom()
-        isAuthenticated()
+        checkAuthentication()
     }
 
 
     fun getAuthStatusLiveData() = authStatus
-    fun getUserProfileLiveData() = userProfileDetails
     fun getLoginInWithEmailLiveData() = signInWithEmailAndPassword
     fun getCreateAccountWithEmailLiveData() = createWithEmailAndPassword
 

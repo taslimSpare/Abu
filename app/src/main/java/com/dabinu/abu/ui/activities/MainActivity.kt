@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.navigation.findNavController
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dabinu.abu.R
@@ -22,16 +23,13 @@ class MainActivity : AppCompatActivity() {
     private val authViewModel by viewModel<AuthViewModel>()
 
 
-    private var isUserLoggedIn = false
-
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         setupViews()
         observe()
+        authViewModel.checkAuthentication()
 
     }
 
@@ -67,23 +65,35 @@ class MainActivity : AppCompatActivity() {
         rvDrawer.adapter = drawerAdapter
 
 
-        btnDrawerLogout.setOnClickListener { if(isUserLoggedIn) logout() else login() }
-
         drawerHeader.setOnClickListener { navController.navigate(R.id.profileFragment) }
     }
 
 
     private fun observe() {
 
+        authViewModel.getAuthStatusLiveData().observe(this, {
+
+            when(it) {
+
+                true -> {
+                    btn_log_in.text = getString(R.string.logout)
+                    btn_log_in.setOnClickListener { logout() }
+                }
+                false -> {
+                    btn_log_in.text = getString(R.string.login)
+                    btn_log_in.setOnClickListener { navController.navigate(R.id.signInFragment) }
+                }
+            }
+        })
+
+        authViewModel.getProfileFromRoom.observe(this, {
+            it?.let { list -> tvUsernameHomePage.text = list[0].name }
+        })
     }
 
-
-    private fun login() {
-
-    }
 
     private fun logout() {
-
+        authViewModel.logout()
     }
 
 

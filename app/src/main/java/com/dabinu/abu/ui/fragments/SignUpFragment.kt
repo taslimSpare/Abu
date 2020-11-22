@@ -12,6 +12,7 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.dabinu.abu.R
 import com.dabinu.abu.databinding.FragmentSignUpBinding
+import com.dabinu.abu.models.Account
 import com.dabinu.abu.models.STATE_FAILED
 import com.dabinu.abu.models.STATE_LOADING
 import com.dabinu.abu.models.STATE_SUCCESSFUL
@@ -49,7 +50,7 @@ class SignUpFragment : Fragment() {
                     emailAddress.text.toString().trim().isEmpty() -> emailAddress.error = "This field is required"
                     password.text.toString().trim().isEmpty() -> password.error = "This field is required"
                     password.text.toString().trim() != confirmPassword.text.toString().trim() -> confirmPassword.error = "Passwords do not match"
-                    else -> viewmodel.signInWithEmailPassword(emailAddress.text.toString().trim(), password.text.toString().trim())
+                    else -> viewmodel.createAccountWithEmailPassword(Account(email = emailAddress.text.toString().trim(), name = name.text.toString().trim(), hasSubscribed = false), password.text.toString().trim())
                 }
             }
 

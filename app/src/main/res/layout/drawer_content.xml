@@ -53,14 +53,13 @@
             android:id="@+id/rvDrawer"
             tools:listitem="@layout/layout_drawer_item" />
 
-        <include layout="@layout/layout_abu_btn"
-            android:layout_gravity="bottom"
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_log_in"
+            style="@style/AbuAuthButton"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/button_height"
-            android:layout_marginEnd="@dimen/normal_margin"
-            android:layout_marginStart="@dimen/normal_margin"
-            android:layout_marginBottom="@dimen/normal_margin"
-            android:id="@+id/btnDrawerLogout" />
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/normal_margin"
+            android:layout_gravity="bottom"/>
 
     </FrameLayout>
 

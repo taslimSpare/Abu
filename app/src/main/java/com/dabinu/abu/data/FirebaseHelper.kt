@@ -61,7 +61,7 @@ class FirebaseHelper {
     }
 
 
-    fun isAuthenticated() : Boolean = mAuth.currentUser == null
+    fun isAuthenticated() : Boolean = mAuth.currentUser != null
 
 
     fun updateSubscriptionStatus(bool: Boolean) {
