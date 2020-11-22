@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AbuAuthBorderLessButton" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:textAllCaps">false</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">?android:attr/actionBarSize</item>
+    </style>
+
+    <style name="AbuAppTextInput.Outlined" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/app_deep_gray</item>
+        <item name="boxStrokeWidth">1dp</item>
+        <item name="hintTextColor">#242F57</item>
+    </style>
+
+    <style name="AbuAuthButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">@dimen/normal_margin</item>
+        <item name="backgroundTint">@color/app_green</item>
+        <item name="background">@color/app_green</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="cornerRadius">@dimen/button_radius</item>
+    </style>
+
+
+</resources>

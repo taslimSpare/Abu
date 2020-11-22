@@ -37,7 +37,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/divider_height"
-        android:layout_margin="@dimen/fifteen"
+        android:layout_margin="@dimen/normal_margin"
         android:id="@+id/dividerDrawer"
         android:layout_below="@+id/drawerHeader"
         android:background="@color/divider" />
@@ -57,9 +57,9 @@
             android:layout_gravity="bottom"
             android:layout_width="match_parent"
             android:layout_height="@dimen/button_height"
-            android:layout_marginEnd="@dimen/fifteen"
-            android:layout_marginStart="@dimen/fifteen"
-            android:layout_marginBottom="@dimen/fifteen"
+            android:layout_marginEnd="@dimen/normal_margin"
+            android:layout_marginStart="@dimen/normal_margin"
+            android:layout_marginBottom="@dimen/normal_margin"
             android:id="@+id/btnDrawerLogout" />
 
     </FrameLayout>

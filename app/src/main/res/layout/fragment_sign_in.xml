@@ -1,14 +1,139 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragments.SignInFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        tools:context=".presentation.login.LoginFragment">
 
-</FrameLayout>
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/leftGuide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.05" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/twentyFiveGuide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.25" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/eightyGuide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.8" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/rightGuide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.95" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/abu_logo"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="@dimen/normal_margin"
+            android:src="@drawable/ic_launcher_background"
+            app:layout_constraintStart_toEndOf="@+id/leftGuide"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_sign_up"
+            style="@style/AbuAuthBorderLessButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/normal_margin"
+            android:text="@string/signup"
+            android:textColor="@color/app_gray"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_sign_in"
+            app:layout_constraintEnd_toStartOf="@+id/btn_sign_in" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_sign_in"
+            style="@style/AbuAuthBorderLessButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/login"
+            android:textColor="@color/app_blue"
+            app:layout_constraintBottom_toBottomOf="@+id/abu_logo"
+            app:layout_constraintEnd_toStartOf="@+id/rightGuide" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/welcome_back_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/welcome_back"
+            android:textSize="@dimen/big_text_height"
+            app:layout_constraintStart_toEndOf="@+id/leftGuide"
+            app:layout_constraintTop_toBottomOf="@+id/twentyFiveGuide" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/email_textinput"
+            style="@style/AbuAppTextInput.Outlined"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/very_big_margin"
+            app:errorEnabled="true"
+            app:layout_constraintEnd_toStartOf="@+id/rightGuide"
+            app:layout_constraintStart_toEndOf="@+id/leftGuide"
+            app:layout_constraintTop_toBottomOf="@+id/welcome_back_text">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/email_address"
+                android:layout_width="match_parent"
+                android:layout_height="?android:attr/actionBarSize"
+                android:gravity="center_vertical"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress"
+                tools:hint="@string/email" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/password_textinput"
+            style="@style/AbuAppTextInput.Outlined"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/small_margin"
+            app:endIconMode="password_toggle"
+            app:endIconTint="@color/app_deep_gray"
+            app:errorEnabled="true"
+            app:layout_constraintEnd_toStartOf="@+id/rightGuide"
+            app:layout_constraintStart_toEndOf="@+id/leftGuide"
+            app:layout_constraintTop_toBottomOf="@+id/email_textinput">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/password"
+                android:layout_width="match_parent"
+                android:layout_height="?android:attr/actionBarSize"
+                android:gravity="center_vertical"
+                android:hint="@string/password"
+                android:inputType="textPassword"
+                tools:hint="@string/password" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_continue"
+            style="@style/AbuAuthButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/normal_margin"
+            android:text="@string/login"
+            app:layout_constraintStart_toEndOf="@+id/leftGuide"
+            app:layout_constraintEnd_toStartOf="@id/rightGuide"
+            app:layout_constraintTop_toBottomOf="@+id/password_textinput" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
