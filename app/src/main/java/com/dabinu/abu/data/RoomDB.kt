@@ -17,4 +17,13 @@ class RoomDB(
     suspend fun insert(word: Account) {
         accountDao.saveProfile(word)
     }
+
+
+    @Suppress("RedundantSuspendModifier")
+    @WorkerThread
+    suspend fun deleteProfile() {
+        accountDao.deleteProfile()
+    }
+
+
 }
