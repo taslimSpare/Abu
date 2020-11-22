@@ -1,10 +1,10 @@
-package com.dabinu.abu.data.room.dao
+package com.dabinu.abu.room.dao
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.dabinu.abu.data.models.Account
+import com.dabinu.abu.models.Account
 import kotlinx.coroutines.flow.Flow
 
 @Dao

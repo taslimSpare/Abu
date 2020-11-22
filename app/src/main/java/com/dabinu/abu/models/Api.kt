@@ -1,4 +1,4 @@
-package com.dabinu.abu.data.models
+package com.dabinu.abu.models
 
 
 

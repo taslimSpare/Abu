@@ -1,11 +1,11 @@
-package com.dabinu.abu.data.room
+package com.dabinu.abu.room
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.dabinu.abu.data.models.Account
-import com.dabinu.abu.data.room.dao.AccountDao
+import com.dabinu.abu.models.Account
+import com.dabinu.abu.room.dao.AccountDao
 
 
 @Database(entities = [Account::class], version = 1, exportSchema = false)

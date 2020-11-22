@@ -1,9 +1,9 @@
-package com.dabinu.abu.data.viewmodels
+package com.dabinu.abu.viewmodels
 
 import androidx.lifecycle.*
-import com.dabinu.abu.data.data.FirebaseHelper
-import com.dabinu.abu.data.data.RoomDB
-import com.dabinu.abu.data.models.Account
+import com.dabinu.abu.data.FirebaseHelper
+import com.dabinu.abu.data.RoomDB
+import com.dabinu.abu.models.Account
 import kotlinx.coroutines.launch
 
 class AuthViewModel(

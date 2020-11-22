@@ -1,8 +1,8 @@
-package com.dabinu.abu.data.data
+package com.dabinu.abu.data
 
 import androidx.annotation.WorkerThread
-import com.dabinu.abu.data.models.Account
-import com.dabinu.abu.data.room.dao.AccountDao
+import com.dabinu.abu.models.Account
+import com.dabinu.abu.room.dao.AccountDao
 import kotlinx.coroutines.flow.Flow
 
 class RoomDB(
