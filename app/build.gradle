@@ -18,7 +18,14 @@ android {
     }
 
     buildTypes {
+
+        debug {
+            buildConfigField "String", 'BASE_URL', '"http://data.fixer.io/api/"'
+            buildConfigField "String", 'ACCESS_TOKEN', '"b749303d4f49c6f0ac1b107e04e23130"'
+        }
         release {
+            buildConfigField "String", 'BASE_URL', '"http://data.fixer.io/api/"'
+            buildConfigField "String", 'ACCESS_TOKEN', '"b749303d4f49c6f0ac1b107e04e23130"'
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
