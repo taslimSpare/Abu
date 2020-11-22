@@ -1,14 +1,192 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragments.CurrencyConversionFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ib_menu"
+                android:src="@drawable/ic_menu"
+                android:padding="@dimen/big_margin"
+                android:layout_marginTop="@dimen/extremely_big_margin"
+                android:background="@android:color/transparent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/signup"
+                android:textSize="@dimen/normal_text_height"
+                android:textColor="@color/app_green"
+                android:textStyle="bold"
+                android:layout_marginEnd="@dimen/big_margin"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/ib_menu"
+                app:layout_constraintBottom_toBottomOf="@id/ib_menu" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_header"
+                android:text="@string/currencyCalculator"
+                android:textSize="@dimen/very_big_text_height"
+                android:textColor="@color/app_blue"
+                android:textStyle="bold"
+                android:layout_marginStart="@dimen/big_margin"
+                android:layout_marginTop="@dimen/very_very_big_margin"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ib_menu" />
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/button_height_currency"
+                android:id="@+id/cl_from_currency"
+                android:background="@drawable/currency_edittext_shape"
+                android:layout_marginStart="@dimen/big_margin"
+                android:layout_marginEnd="@dimen/big_margin"
+                android:layout_marginTop="@dimen/extremely_big_margin"
+                app:layout_constraintTop_toBottomOf="@+id/tv_header">
+
+
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/et_from_currency"
+                    android:textColor="@color/app_black"
+                    android:background="@android:color/transparent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_from_currency"
+                    tools:ignore="Autofill,LabelFor,TextFields" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/tv_from_currency"
+                    android:gravity="center"
+                    android:padding="@dimen/normal_margin"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/button_height_currency"
+                android:id="@+id/cl_to_currency"
+                android:background="@drawable/currency_edittext_shape"
+                android:layout_marginStart="@dimen/big_margin"
+                android:layout_marginEnd="@dimen/big_margin"
+                android:layout_marginTop="@dimen/big_margin"
+                app:layout_constraintTop_toBottomOf="@+id/cl_from_currency">
+
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/et_to_currency"
+                    android:textColor="@color/app_black"
+                    android:background="@android:color/transparent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_to_currency"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/tv_to_currency"
+                    android:gravity="center"
+                    android:padding="@dimen/normal_margin"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/iv_exchange"
+                android:src="@drawable/ic_exchange_rates"
+                android:layout_marginTop="@dimen/very_very_big_margin"
+                android:padding="@dimen/normal_margin"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cl_to_currency"
+                tools:ignore="ContentDescription" />
+
+            <Spinner
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:id="@+id/sp_from_currency"
+                android:layout_marginStart="@dimen/big_margin"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/iv_exchange"
+                app:layout_constraintTop_toTopOf="@id/iv_exchange"
+                app:layout_constraintBottom_toBottomOf="@id/iv_exchange" />
+
+            <Spinner
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:id="@+id/sp_to_currency"
+                android:layout_marginEnd="@dimen/big_margin"
+                app:layout_constraintStart_toEndOf="@+id/iv_exchange"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/iv_exchange"
+                app:layout_constraintBottom_toBottomOf="@id/iv_exchange" />
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_continue"
+                style="@style/AbuAuthButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/normal_margin"
+                android:layout_marginEnd="@dimen/normal_margin"
+                android:layout_marginTop="@dimen/very_very_big_margin"
+                android:text="@string/convert"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sp_from_currency" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_mid_market"
+                android:text="@string/mid_market_exchange"
+                android:textColor="@color/app_blue"
+                android:gravity="center"
+                android:drawablePadding="@dimen/small_margin"
+                android:layout_marginTop="@dimen/big_margin"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_continue"
+                app:drawableEndCompat="@drawable/ic_error" />
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:background="@drawable/graph_background"
+                android:layout_marginTop="@dimen/extremely_big_margin"
+                app:layout_constraintTop_toBottomOf="@+id/tv_mid_market" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
 
 
 </layout>

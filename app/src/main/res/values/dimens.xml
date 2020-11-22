@@ -8,9 +8,11 @@
 
     <dimen name="normal_text_height">16sp</dimen>
     <dimen name="big_text_height">21sp</dimen>
+    <dimen name="very_big_text_height">35sp</dimen>
 
     <dimen name="divider_height">0.5dp</dimen>
     <dimen name="button_height">40dp</dimen>
+    <dimen name="button_height_currency">50dp</dimen>
 
     <dimen name="very_small_margin">5dp</dimen>
     <dimen name="small_margin">10dp</dimen>
@@ -18,6 +20,7 @@
     <dimen name="big_margin">20dp</dimen>
     <dimen name="very_big_margin">25dp</dimen>
     <dimen name="very_very_big_margin">40dp</dimen>
+    <dimen name="extremely_big_margin">60dp</dimen>
 
 
     <dimen name="button_radius">7dp</dimen>
