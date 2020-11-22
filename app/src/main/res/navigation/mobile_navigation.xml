@@ -3,23 +3,37 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@+id/currencyConversionFragment">
+
 
     <fragment
-        android:id="@+id/nav_home"
-        android:name="com.dabinu.abu.ui.activities.ui.home.HomeFragment"
-        android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
-
+        android:id="@+id/currencyConversionFragment"
+        android:name="com.dabinu.abu.ui.fragments.CurrencyConversionFragment"
+        android:label="fragment_currency_conversion"
+        tools:layout="@layout/fragment_currency_conversion" />
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.dabinu.abu.ui.activities.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
-
+        android:id="@+id/countriesFragment"
+        android:name="com.dabinu.abu.ui.fragments.CountriesFragment"
+        android:label="fragment_countries"
+        tools:layout="@layout/fragment_countries" />
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.dabinu.abu.ui.activities.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/profileFragment"
+        android:name="com.dabinu.abu.ui.fragments.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/signInFragment"
+        android:name="com.dabinu.abu.ui.fragments.SignInFragment"
+        android:label="fragment_sign_in"
+        tools:layout="@layout/fragment_sign_in" />
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.dabinu.abu.ui.fragments.SignUpFragment"
+        android:label="fragment_sign_up"
+        tools:layout="@layout/fragment_sign_up" />
+    <fragment
+        android:id="@+id/exchangeRatesFragment"
+        android:name="com.dabinu.abu.ui.fragments.ExchangeRatesFragment"
+        android:label="fragment_exchange_rates"
+        tools:layout="@layout/fragment_exchange_rates" />
 </navigation>
