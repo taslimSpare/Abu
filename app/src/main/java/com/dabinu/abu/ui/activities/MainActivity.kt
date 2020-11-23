@@ -1,10 +1,11 @@
 package com.dabinu.abu.ui.activities
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.navigation.findNavController
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
+import androidx.core.view.GravityCompat
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dabinu.abu.R
@@ -73,11 +74,11 @@ class MainActivity : AppCompatActivity() {
 
         authViewModel.getAuthStatusLiveData().observe(this, {
 
-            when(it) {
+            when (it) {
 
                 true -> {
                     btn_log_in.text = getString(R.string.logout)
-                    btn_log_in.setOnClickListener { logout(); drawer_layout.closeDrawers() }
+                    btn_log_in.setOnClickListener { authViewModel.logout(); drawer_layout.closeDrawers(); Toast.makeText(this, "Logged out", Toast.LENGTH_LONG).show() }
                 }
                 false -> {
                     btn_log_in.text = getString(R.string.login)
@@ -88,12 +89,13 @@ class MainActivity : AppCompatActivity() {
 
         authViewModel.getProfileFromRoom.observe(this, {
             if(it.isNotEmpty()) tvUsernameHomePage.text = it[0].name
+            else { tvUsernameHomePage.text = "" }
         })
     }
 
 
-    private fun logout() {
-        authViewModel.logout()
+    fun openDrawer() {
+        drawer_layout.openDrawer(GravityCompat.START)
     }
 
 

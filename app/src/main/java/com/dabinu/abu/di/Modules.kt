@@ -13,6 +13,7 @@ import com.dabinu.abu.data.RoomDB
 import com.dabinu.abu.room.AppDatabase
 import com.dabinu.abu.room.dao.AccountDao
 import com.dabinu.abu.viewmodels.AuthViewModel
+import com.dabinu.abu.viewmodels.FixerViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import retrofit2.converter.gson.GsonConverterFactory
@@ -28,6 +29,7 @@ val appModules = module {
     single { Room.databaseBuilder(androidContext(), AppDatabase::class.java, "abu_db").allowMainThreadQueries().build() }
     single { get<AppDatabase>().accountDao() }
     viewModel { AuthViewModel(get(), get()) }
+    viewModel { FixerViewModel(get(), get()) }
 }
 
 

@@ -32,6 +32,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/tv_name"
                     android:text="@string/signup"
                     android:textSize="@dimen/normal_text_height"
                     android:textColor="@color/app_green"
@@ -71,7 +72,10 @@
                         android:layout_height="match_parent"
                         android:id="@+id/et_from_currency"
                         android:textColor="@color/app_black"
+                        android:paddingStart="@dimen/normal_margin"
+                        android:paddingEnd="@dimen/small_margin"
                         android:background="@android:color/transparent"
+                        android:inputType="numberDecimal"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/tv_from_currency"
                         tools:ignore="Autofill,LabelFor,TextFields" />
@@ -103,6 +107,8 @@
                         android:layout_height="match_parent"
                         android:id="@+id/et_to_currency"
                         android:textColor="@color/app_black"
+                        android:paddingStart="@dimen/normal_margin"
+                        android:paddingEnd="@dimen/small_margin"
                         android:background="@android:color/transparent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/tv_to_currency"/>
@@ -135,6 +141,7 @@
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:id="@+id/sp_from_currency"
+                    android:background="@null"
                     android:layout_marginStart="@dimen/big_margin"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/iv_exchange"
@@ -145,6 +152,7 @@
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:id="@+id/sp_to_currency"
+                    android:background="@null"
                     android:layout_marginEnd="@dimen/big_margin"
                     app:layout_constraintStart_toEndOf="@+id/iv_exchange"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -192,7 +200,9 @@
 
         </ScrollView>
 
-        <include layout="@layout/layout_loading" />
+        <include
+            android:id="@+id/layout_loading"
+            layout="@layout/layout_loading" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
