@@ -1,7 +1,7 @@
 package com.dabinu.abu.viewmodels
 
 
-import android.util.Log
+
 import androidx.lifecycle.*
 import com.dabinu.abu.data.ApiService
 import com.dabinu.abu.data.RoomDB
@@ -11,7 +11,7 @@ import java.lang.Exception
 
 class FixerViewModel(
     private val api: ApiService,
-    private val roomDB: RoomDB) : ViewModel() {
+    roomDB: RoomDB) : ViewModel() {
 
     private val convertLiveData = MutableLiveData<Resource<ConvertResponse>>()
     private val symbolsLiveData = MutableLiveData<Resource<SymbolsResponse>>()
@@ -26,15 +26,13 @@ class FixerViewModel(
             convertLiveData.postValue(Resource.loading())
             try {
                 val result = api.convert(from, to, amount)
-                Log.d("PPPPPP", result.toString())
                 when(result.success) {
                     true -> convertLiveData.postValue(Resource.success(result))
-                    false -> convertLiveData.postValue(Resource.error("Failed, try again later"))
+                    false -> convertLiveData.postValue(Resource.error())
                 }
             }
             catch (e: Exception) {
-                Log.d("PPPPPP", e.message as String)
-                convertLiveData.postValue(Resource.error("Failed, try again later"))
+                convertLiveData.postValue(Resource.error())
             }
         }
     }
@@ -49,11 +47,11 @@ class FixerViewModel(
                 val result = api.symbols()
                 when(result.success) {
                     true -> symbolsLiveData.postValue(Resource.success(result))
-                    false -> symbolsLiveData.postValue(Resource.error("Failed, try again later"))
+                    false -> symbolsLiveData.postValue(Resource.error())
                 }
             }
             catch (e: Exception) {
-                symbolsLiveData.postValue(Resource.error(e.message))
+                symbolsLiveData.postValue(Resource.error())
             }
         }
     }

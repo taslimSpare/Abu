@@ -32,7 +32,10 @@ val appModules = module {
     single { createApiService() }
     single { FirebaseHelper() }
     single { RoomDB(get() as AccountDao) }
-    single { Room.databaseBuilder(androidContext(), AppDatabase::class.java, "abu_db").allowMainThreadQueries().build() }
+    single { Room.databaseBuilder(androidContext(),
+        AppDatabase::class.java, "abu_db")
+        .allowMainThreadQueries()
+        .build() } // using allowMainThreadQueries() is highly discouraged as running on the UI thread can lead to ANRs. A better alternative would have been to run my DB queries on a network thread using Coroutines.
     single { get<AppDatabase>().accountDao() }
     viewModel { AuthViewModel(get(), get()) }
     viewModel { FixerViewModel(get(), get()) }
