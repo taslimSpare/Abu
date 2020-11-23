@@ -1,18 +1,23 @@
 package com.dabinu.abu.viewmodels
 
+
 import android.util.Log
 import androidx.lifecycle.*
 import com.dabinu.abu.data.ApiService
+import com.dabinu.abu.data.RoomDB
 import com.dabinu.abu.models.*
 import kotlinx.coroutines.launch
 import java.lang.Exception
 
 class FixerViewModel(
-    val api: ApiService) : ViewModel() {
+    private val api: ApiService,
+    private val roomDB: RoomDB) : ViewModel() {
 
     private val convertLiveData = MutableLiveData<Resource<ConvertResponse>>()
-    private val latestRatesLiveData = MutableLiveData<Resource<LatestResponse>>()
     private val symbolsLiveData = MutableLiveData<Resource<SymbolsResponse>>()
+
+
+    val getProfileFromRoom: LiveData<List<Account>> = roomDB.getAccount.asLiveData()
 
 
     fun convert(from: String, to: String, amount: Double) {
@@ -21,34 +26,19 @@ class FixerViewModel(
             convertLiveData.postValue(Resource.loading())
             try {
                 val result = api.convert(from, to, amount)
+                Log.d("PPPPPP", result.toString())
                 when(result.success) {
                     true -> convertLiveData.postValue(Resource.success(result))
                     false -> convertLiveData.postValue(Resource.error("Failed, try again later"))
                 }
             }
             catch (e: Exception) {
+                Log.d("PPPPPP", e.message as String)
                 convertLiveData.postValue(Resource.error("Failed, try again later"))
             }
         }
     }
 
-
-    fun fetchLatest(base: String, symbols: String) {
-
-        viewModelScope.launch {
-            latestRatesLiveData.postValue(Resource.loading())
-            try {
-                val result = api.latest(base, symbols)
-                when(result.success) {
-                    true -> latestRatesLiveData.postValue(Resource.success(result))
-                    false -> latestRatesLiveData.postValue(Resource.error("Failed, try again later"))
-                }
-            }
-            catch (e: Exception) {
-                latestRatesLiveData.postValue(Resource.error("Failed, try again later"))
-            }
-        }
-    }
 
 
     fun fetchAllSymbols() {
@@ -70,7 +60,6 @@ class FixerViewModel(
 
 
     fun getConvertLiveData() = convertLiveData
-    fun getLatestRatesLiveData() = latestRatesLiveData
     fun getSymbolsLiveData() = symbolsLiveData
 
 

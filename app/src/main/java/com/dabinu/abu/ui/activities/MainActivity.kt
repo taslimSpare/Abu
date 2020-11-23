@@ -5,14 +5,13 @@ import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.navigation.findNavController
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
+import androidx.core.view.GravityCompat
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dabinu.abu.R
 import com.dabinu.abu.models.DrawerItem
 import com.dabinu.abu.ui.adapters.DrawerAdapter
 import com.dabinu.abu.viewmodels.AuthViewModel
-import com.dabinu.abu.viewmodels.FixerViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.drawer_content.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -92,6 +91,11 @@ class MainActivity : AppCompatActivity() {
             if(it.isNotEmpty()) tvUsernameHomePage.text = it[0].name
             else { tvUsernameHomePage.text = "" }
         })
+    }
+
+
+    fun openDrawer() {
+        drawer_layout.openDrawer(GravityCompat.START)
     }
 
 

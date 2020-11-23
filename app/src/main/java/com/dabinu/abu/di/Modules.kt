@@ -29,7 +29,7 @@ val appModules = module {
     single { Room.databaseBuilder(androidContext(), AppDatabase::class.java, "abu_db").allowMainThreadQueries().build() }
     single { get<AppDatabase>().accountDao() }
     viewModel { AuthViewModel(get(), get()) }
-    viewModel { FixerViewModel(get()) }
+    viewModel { FixerViewModel(get(), get()) }
 }
 
 
