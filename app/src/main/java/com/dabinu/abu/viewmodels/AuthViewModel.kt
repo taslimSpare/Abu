@@ -35,11 +35,6 @@ class AuthViewModel(
 
 
 
-    fun checkAuthentication() {
-        authStatus.postValue((firebase.isAuthenticated()))
-    }
-
-
     fun signInWithEmailPassword(email: String, password: String) {
 
         try {
@@ -146,11 +141,9 @@ class AuthViewModel(
     fun logout() {
         firebase.signOut()
         deleteProfileFromRoom()
-        checkAuthentication()
     }
 
 
-    fun getAuthStatusLiveData() = authStatus
     fun getLoginInWithEmailLiveData() = signInWithEmailAndPassword
     fun getCreateAccountWithEmailLiveData() = createWithEmailAndPassword
 

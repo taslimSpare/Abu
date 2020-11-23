@@ -30,7 +30,6 @@ class MainActivity : AppCompatActivity() {
 
         setupViews()
         observe()
-        authViewModel.checkAuthentication()
 
     }
 
@@ -72,24 +71,16 @@ class MainActivity : AppCompatActivity() {
 
     private fun observe() {
 
-        authViewModel.getAuthStatusLiveData().observe(this, {
-
-            when (it) {
-
-                true -> {
-                    btn_log_in.text = getString(R.string.logout)
-                    btn_log_in.setOnClickListener { authViewModel.logout(); drawer_layout.closeDrawers(); Toast.makeText(this, "Logged out", Toast.LENGTH_LONG).show() }
-                }
-                false -> {
-                    btn_log_in.text = getString(R.string.login)
-                    btn_log_in.setOnClickListener { navController.navigate(R.id.signInFragment); drawer_layout.closeDrawers() }
-                }
-            }
-        })
-
         authViewModel.getProfileFromRoom.observe(this, {
-            if(it.isNotEmpty()) tvUsernameHomePage.text = it[0].name
-            else { tvUsernameHomePage.text = "" }
+            if(it.isNotEmpty()) {
+                tvUsernameHomePage.text = it[0].name
+                btn_log_in.text = getString(R.string.logout)
+                btn_log_in.setOnClickListener { authViewModel.logout(); drawer_layout.closeDrawers(); Toast.makeText(this, "Logged out", Toast.LENGTH_LONG).show() }
+            }
+            else {
+                tvUsernameHomePage.text = ""
+                btn_log_in.text = getString(R.string.login)
+                btn_log_in.setOnClickListener { navController.navigate(R.id.signInFragment); drawer_layout.closeDrawers() }}
         })
     }
 
