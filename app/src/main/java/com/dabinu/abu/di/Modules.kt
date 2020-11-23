@@ -19,8 +19,14 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import retrofit2.converter.gson.GsonConverterFactory
 
 
+
+/* The fields below are saved in the buildConfig for easier management and scalability.
+   This would also be useful if there are different values per buildType in the future
+ */
 private const val API_BASE_URL = BuildConfig.BASE_URL
 private const val ACCESS_TOKEN = BuildConfig.ACCESS_TOKEN
+
+
 
 val appModules = module {
     single { createApiService() }
@@ -56,6 +62,11 @@ private fun getOkHttpClient() : OkHttpClient {
 
 
 
+/* The main purpose of this interceptor is to pass in the
+   access_key parameter since it's required for every API call to fixer.io.
+   This approach is preferable to manually adding it in
+   every call.
+ */
 class TokenInterceptor: Interceptor {
 
     override fun intercept(chain: Interceptor.Chain): Response {
