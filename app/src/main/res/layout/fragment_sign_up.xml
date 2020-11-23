@@ -163,9 +163,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="?android:attr/actionBarSize"
                 android:gravity="center_vertical"
-                android:hint="@string/password"
+                android:hint="@string/confirm_password"
                 android:inputType="textPassword"
-                tools:hint="@string/password" />
+                tools:hint="@string/confirm_password" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
