@@ -7,21 +7,19 @@ enum class State {
 }
 
 
-class Resource<T>(val state: State = State.LOADING, val message: String? = "", val data: T?) {
+class Resource<T>(val state: State = State.LOADING, val data: T?) {
     companion object {
-        fun<T> success(data: T, message: String = ""): Resource<T> {
-            return Resource(State.SUCCESS, message, data)
+        fun<T> success(data: T): Resource<T> {
+            return Resource(State.SUCCESS, data)
         }
 
-        fun<T> error(message: String?, e: T? = null): Resource<T> {
-            return Resource(State.ERROR, message, e)
+        fun<T> error(e: T? = null): Resource<T> {
+            return Resource(State.ERROR, e)
         }
 
         fun <T> loading(data: T? = null): Resource<T> {
-            return Resource(State.LOADING, "", data)
+            return Resource(State.LOADING, data)
         }
     }
 }
 
-
-class Response<T>(val message: String, val status: String, val data: T?)
